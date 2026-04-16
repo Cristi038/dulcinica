@@ -1351,7 +1351,7 @@
         <li><a href="#faq" data-i18n="nav.faq">FAQ</a></li>
       </ul>
       <!-- Language toggle -->
-      <div class="lang-toggle" aria-label="Schimbă limba">
+      <div class="lang-toggle" aria-label="Schimbă limba" style="display:none">
         <button class="lang-btn" id="langRo" onclick="setLang('ro')" aria-label="Română">RO</button>
         <button class="lang-btn" id="langEn" onclick="setLang('en')" aria-label="English">EN</button>
       </div>
@@ -1367,7 +1367,7 @@
     <a href="#configurator" data-i18n="nav.configurator" onclick="closeMobileMenu()">Configurator</a>
     <a href="#comanda" data-i18n="nav.comanda" onclick="closeMobileMenu()">Comandă</a>
     <a href="#faq" data-i18n="nav.faq" onclick="closeMobileMenu()">FAQ</a>
-    <div class="lang-toggle" style="padding:14px 24px; gap:8px;">
+    <div class="lang-toggle" style="padding:14px 24px; gap:8px; display:none">
       <button class="lang-btn" id="langRoM" onclick="setLang('ro');closeMobileMenu()">RO</button>
       <button class="lang-btn" id="langEnM" onclick="setLang('en');closeMobileMenu()">EN</button>
     </div>
@@ -2625,7 +2625,13 @@ function updateOrderSummary() {
   categories.forEach(cat => {
     cat.items.forEach(item => parts.push(`${item.label}: +${item.value} lei`));
   });
-  parts.push(`\nTotal: ${total} lei`);
+  const expressChecked = document.getElementById('expressDeliveryCheck')?.checked || false;
+  if (expressChecked) {
+    const expressAmount = Math.round(total * 0.2);
+    parts.push(`\nTotal: ${total} lei + Livrare rapidă (+20%): ${expressAmount} lei = Total final: ${total + expressAmount} lei`);
+  } else {
+    parts.push(`\nTotal: ${total} lei`);
+  }
   el.value = parts.join('\n');
 }
 
