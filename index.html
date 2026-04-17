@@ -1024,7 +1024,11 @@
     @media (max-width: 768px) {
       .config-layout { grid-template-columns: 1fr; }
       .config-preview { position: static; }
-      #priceSummary { display: none; }
+      #priceSummary { background: transparent; border: none; box-shadow: none; padding: 0; }
+      #priceSummary .price-summary-title,
+      #priceSummary #priceLines,
+      #priceSummary .price-total,
+      #priceSummary #prepTimeEstimate { display: none; }
       .config-preview > .finalize-btn { display: none; }
       #mobilePriceBar { display: block; }
       body { padding-bottom: 70px; }
@@ -2101,10 +2105,6 @@ Noi am construit altceva: primul configurator digital de torturi din oraș, unde
 
 Dulcinica înseamnă transparență, personalizare completă și torturi artizanale create special pentru tine.</p>
     <div class="despre-stats reveal">
-      <div class="despre-stat">
-        <span class="despre-stat-number" data-i18n="despre.stat1val">55%</span>
-        <span class="despre-stat-label" data-i18n="despre.stat1label">Marjă artizanală</span>
-      </div>
       <div class="despre-stat">
         <span class="despre-stat-number" data-i18n="despre.stat2val">5 pași</span>
         <span class="despre-stat-label" data-i18n="despre.stat2label">Configurare completă</span>
